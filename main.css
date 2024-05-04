@@ -1,0 +1,55 @@
+body {
+    background-color: #2a2a2a;
+    width: 30rem;
+    overflow-y: auto;
+}
+
+hr{
+    color: white;
+    height: 2px;
+}
+
+.trackOff{
+    cursor: pointer;
+    border-radius: 10px;
+    border: 1px solid white;
+    transition: background-color 0.3s ease;
+    transition: color 0.3s ease;
+}
+
+.trackOff:hover{
+    background-color: white;
+    color: black;
+}
+
+.trackOn{
+    cursor: pointer;
+    border-radius: 10px;
+    background-color: white;
+    color: black;
+    transition: background-color 0.3s ease;
+}
+
+.trackOn:hover{
+    background-color: rgb(207, 0, 0);
+}
+
+.trackSheet{
+    cursor: pointer;
+    border-radius: 10px;
+    border: 1px solid white;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.trackSheet:hover{
+    background-color: rgb(207, 0, 0);
+}
+
+.hide{
+    display: none;
+}
+
+.pointer{
+    cursor: pointer;
+}
