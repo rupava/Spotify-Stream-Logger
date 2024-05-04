@@ -1,4 +1,3 @@
-document.addEventListener('DOMContentLoaded', popupLoaded);
 const albumTypeObj = document.getElementById('albumType');
 const albumNameObj = document.getElementById('albumName');
 const trackViewObj = document.getElementById("tracks");
@@ -6,6 +5,7 @@ const sheetTrackViewObj = document.getElementById("sheet_tracks");
 const bodyObj = document.getElementById("body");
 const popup_main = document.getElementById("popup_main");
 const sheets_main = document.getElementById("sheets_main");
+const message_main = document.getElementById("message_main");
 const sheetsBtn = document.getElementById("sheetsBtn");
 const cleanBtn = document.getElementById("cleanBtn");
 const backToAlbum = document.getElementById("backToAlbum");
@@ -13,6 +13,19 @@ const exportBtn = document.getElementById("exportBtn");
 
 const EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
 const EXCEL_EXTENSION = '.xlsx';
+
+document.addEventListener('DOMContentLoaded', function (){
+    popupLoaded();
+    chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+        const currentTabUrl = tabs[0].url;
+    
+        if (currentTabUrl.includes("spotify.com")) {
+            popup_main.classList.remove('hide');
+        } else {
+            message_main.classList.remove('hide');
+        }
+    });
+});
 
 function capitalizeFirst(str) {
     str = str.toLowerCase();
