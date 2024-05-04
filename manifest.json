@@ -1,7 +1,7 @@
 {
     "name": "Spotify Stream Logger",
     "version": "0.1.0",
-    "description": "Logging Spotify stream counts for albums.",
+    "description": "Effortlessly track album stream counts on Spotify and export data to Excel.",
     "host_permissions": ["https://*.spotify.com/*"],
     "manifest_version": 3,
 
