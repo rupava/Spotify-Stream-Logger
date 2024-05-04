@@ -1,24 +1,28 @@
 {
-    "name": "Spotify Stream Logger",
-    "version": "0.1.0",
-    "description": "Effortlessly track album stream counts on Spotify and export data to Excel.",
-    "host_permissions": ["https://*.spotify.com/*"],
-    "manifest_version": 3,
+  "name": "Spotify Stream Logger",
+  "version": "0.1.0",
+  "description": "Effortlessly track album stream counts on Spotify and export data to Excel.",
+  "host_permissions": ["https://*.spotify.com/*"],
+  "manifest_version": 3,
 
-    "background": {
-      "service_worker": "background.js"
-    },
-    "content_scripts": [
-      {
-        "matches": ["https://*.spotify.com/*"],
-        "js": ["content.js"],
-        "run_at": "document_start"
-      }
-    ],
-    "permissions":["storage","webRequest","tabs","declarativeContent"],
-    "action": {
-      "default_title": "Spotify Stream Logger",
-      "default_popup": "popup.html"
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*.spotify.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_start"
     }
+  ],
+  "permissions":["storage","webRequest","tabs","declarativeContent"],
+  "action": {
+    "default_title": "Spotify Stream Logger",
+    "default_popup": "popup.html"
+  },
+  "author": {
+    "name":"Rupava Baruah",
+    "email": "periwinkle.tech.services@gmail.com"
   }
+}
 
