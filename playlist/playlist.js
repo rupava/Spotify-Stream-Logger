@@ -152,14 +152,101 @@ function playlistLoad(){
     document.getElementById("body").style.background = `linear-gradient(${dump.images.items[0].extractedColors.colorRaw.hex}, #2a2a2a)`;
 
     let nextBtn = document.getElementById("nextBtn");
-    let prevBtn = document.getElementById("prevBtn");
+    let exportBtn = document.getElementById("exportBtn");
 
     nextBtn.addEventListener('click', function(){
       pagers(playlist_url,auth,0,nextCount,dump.content.totalCount,true);
     });
 
+    exportBtn.addEventListener('click', function(){
+      fetchFullPlaylist(playlist_url,auth)
+    });
+
     fillTrackList(dump);
   });
 }
+
+// //////////////////////////////////////////////////////////////////////////////////////
+
+async function fetchFullPlaylist(playlist_url,auth){
+  const base = "https://api-partner.spotify.com/pathfinder/v1/query";
+  let fuse = true;
+  let dataCollect = []
+  let offset = 0;
+  while (fuse) {
+    const parsedParams = parseParams(playlist_url);
+    let { operationName, variables, extensions } = parsedParams;
+
+    variables["offset"] = offset;
+
+    const fixUrl = base + '?' +
+      objectToQueryString({ operationName, variables: JSON.stringify(variables), extensions: JSON.stringify(extensions) });
+
+    let data = await getData(fixUrl,auth);
+    data = data.data.playlistV2;
+    dataCollect.push(data);
+    
+    if(parseInt(data.content.totalCount) <= 25 || (parseInt(data.content.totalCount)-offset) <= 25 ){
+      fuse = false;
+    }
+    offset+=25;
+  }
+
+  final_export(dataCollect);
+}
+
+function dataSerializer(data){
+  if (!data) {
+    return false;
+  }
+  
+  const serialised = data.flatMap(playlist => 
+    playlist.content.items.flatMap(track => {
+      const artistNames = track.itemV2.data.albumOfTrack.artists.items.map(item => item.profile.name).join(", ");
+  
+      return {
+        "ID": track.itemV2.data.uri,
+        "Track Name": track.itemV2.data.name,
+        "Artists": artistNames,
+        "Streams": track.itemV2.data.playcount
+      };
+    })
+  );
+  console.log(serialised);
+  return serialised
+}
+
+function getTimestamp(){
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, '0');
+  const day = String(now.getDate()).padStart(2, '0');
+  const hours = String(now.getHours()).padStart(2, '0');
+  const minutes = String(now.getMinutes()).padStart(2, '0');
+
+  const formattedDateTime = `${year}-${month}-${day}_${hours}_${minutes}`;
+  return formattedDateTime;
+}
+
+function saveAsExcel(buffer, filename){
+  const data = new Blob([buffer], {type: EXCEL_TYPE});
+  saveAs(data, filename+EXCEL_EXTENSION);
+}
+
+function final_export(final_data){
+  const serialised = dataSerializer(final_data);
+  const timestamp = getTimestamp();
+  const worksheet = XLSX.utils.json_to_sheet(serialised);
+  const workbook = {
+      Sheets: {
+          'data' : worksheet
+      },
+      SheetNames: ['data']
+  };
+  const excelBuffer = XLSX.write(workbook, {bookType: 'xlsx', type: 'array'});
+  saveAsExcel(excelBuffer, `SpotifyStreamLog_${timestamp}`);
+}
+
+// //////////////////////////////////////////////////////////////////////////////////////
 
 playlistLoad();
