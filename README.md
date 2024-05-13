@@ -31,7 +31,11 @@ Once installed, Spotify Stream Logger operates seamlessly in the background. Sim
 ## Screenshots
 
 ![image](https://github.com/rupava/Spotify-Stream-Logger/assets/61538804/5f0bde22-5019-4119-9534-166d4c2ba2fc)
-![image](https://github.com/rupava/Spotify-Stream-Logger/assets/61538804/33c26f55-59ac-4de1-bf2a-2586e7495366)
+![image](https://github.com/rupava/Spotify-Stream-Logger/assets/61538804/1843a50b-a8f8-40fd-a397-380701a6f59c)
+![image](https://github.com/rupava/Spotify-Stream-Logger/assets/61538804/be3cedda-73e5-47b6-b50c-cf86da626e65)
+![image](https://github.com/rupava/Spotify-Stream-Logger/assets/61538804/e30c3465-e727-4984-b459-4d8554f18381)
+
+
 
 ## Contributing
 
