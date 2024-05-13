@@ -42,11 +42,17 @@ function dataSerializer(data){
         let final_obj = {
             "ID":keysMain[i],
             "Track Name":obj.name,
+            "Artists": obj.artists.items.map(item => item.profile.name).join(", "),
             "Streams":obj.playcount,
         }
         serialised.push(final_obj);
     }
     return serialised;
+}
+
+function saveAsExcel(buffer, filename){
+    const data = new Blob([buffer], {type: EXCEL_TYPE});
+    saveAs(data, filename+EXCEL_EXTENSION);
 }
 
 function downloadAsExcel(){
@@ -65,13 +71,8 @@ function downloadAsExcel(){
             SheetNames: ['data']
         };
         const excelBuffer = XLSX.write(workbook, {bookType: 'xlsx', type: 'array'});
-        saveAsExcel(excelBuffer, `SpotifyStreamLog_${timestamp}`);
+        saveAsExcel(excelBuffer, `Spotify_StreamLog_${timestamp}`);
     });
-}
-
-function saveAsExcel(buffer, filename){
-    const data = new Blob([buffer], {type: EXCEL_TYPE});
-    saveAs(data, filename+EXCEL_EXTENSION);
 }
 
 function export_list_load(){

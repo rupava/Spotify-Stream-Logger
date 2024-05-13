@@ -212,7 +212,6 @@ function dataSerializer(data){
       };
     })
   );
-  console.log(serialised);
   return serialised
 }
 
@@ -244,7 +243,7 @@ function final_export(final_data){
       SheetNames: ['data']
   };
   const excelBuffer = XLSX.write(workbook, {bookType: 'xlsx', type: 'array'});
-  saveAsExcel(excelBuffer, `SpotifyStreamLog_${timestamp}`);
+  saveAsExcel(excelBuffer, `Spotify_Playlist_StreamLog_${timestamp}`);
 }
 
 // //////////////////////////////////////////////////////////////////////////////////////

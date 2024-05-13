@@ -18,7 +18,7 @@ const base_constants =
     "playlist":{
         "collectionName": "__typename",
     }
-  }
+}
 
 document.addEventListener('DOMContentLoaded', function (){
     chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
