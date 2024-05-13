@@ -24,9 +24,9 @@ To install Spotify Stream Logger, follow these steps:
 Once installed, Spotify Stream Logger operates seamlessly in the background. Simply browse playlists, albums, or tracks on Spotify, and the extension will automatically track stream data. To export data to Excel, follow these steps:
 
 1. Navigate to the extension popup by clicking on the extension icon.
-2. Add tracks to the export list by clicking on the respective buttons next to each track.
+2. Add/remove tracks to the export list by clicking on the tracks.
 3. Navigate to export list to view added track to modify or export them.
-4. Click on the "Export to Excel" button to generate an Excel file with the exported data for albums and playlists.
+4. Click on the "Export to Excel" button to generate an Excel file with the exported data for albums, playlists and export list.
 
 ## Screenshots
 
