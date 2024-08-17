@@ -64,7 +64,7 @@ function album_track_load() {
 
         document.getElementById("body").style.background = `linear-gradient(${filterByPath(dump,base_constants[PAGE_TYPE].colorPath)}, #2a2a2a)`;
         if(PAGE_TYPE == "album"){
-            tracksObj  = dump.tracks.items
+            tracksObj  = dump.tracksV2.items
             document.getElementById("exportStick").classList.toggle("hide");
             document.getElementById("exportAlbumBtn").classList.toggle("hide");
         }else if(PAGE_TYPE = "track"){
