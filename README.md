@@ -2,6 +2,8 @@
 
 Spotify Stream Logger is a Chrome extension designed to track and log stream data for playlists, albums, and individual tracks on Spotify. It retrieves relevant API calls for playlists, albums, and tracks, makes fetch calls to obtain streaming data, and presents this information in an organized manner. Additionally, users can add tracks to an export list for easy export to Excel, facilitating comprehensive analysis of streaming data.
 
+**THIS PROJECT IS NO LONGER MAINTAINED, FEEL FREE TO TAKE INSPIRATION FROM IT. PATCHES ARE WELCOME. DUE TO MY OTHER PROJECTS REQUIREING MORE ATTENTION AND SPOTIFY'S CONSTANTLY CHANGING BACKEND AND APIS, I AM UNABLE TO KEEP IT GOING.**
+
 ## Features
 
 - **Stream Tracking**: Monitors stream data for playlists, albums, and individual tracks on Spotify.
